@@ -240,10 +240,9 @@ class Main {
                 + " Now that you've received various attack, health and armor upgrades \n-- let's see if you can make it out of this RPG!");
         System.out.println("Your final challenge is: Charizard from the Pokemon of Oz.");
         UserEnemy charizardEnemy = new UserEnemy("Charizard", new int[]{0, 820, 0, 200, 0, 16});
-        String bossScene = GameControl.strInputValidation(new String[]{"attack", "dodge", "retreat"}, "Player " + uPlayer.characterName + " be careful with your choices, Charizard will seriously burn you. (attack, dodge or retreat)");
-        System.out.println(bossScene);
 
         loop: while (true) {
+            String bossScene = GameControl.strInputValidation(new String[]{"attack", "dodge", "retreat"}, "Player " + uPlayer.characterName + " be careful with your choices, Charizard will seriously burn you. (attack, dodge or retreat)");
             switch (bossScene) {
                 case "attack" -> {
                     while (charizardEnemy.enemyCheckLiving()) {
@@ -265,6 +264,7 @@ class Main {
                 case "dodge" -> {
                     System.out.println("Aiming to run from incoming shots, you dive to your left! " +
                             "Will Charizard be able to adapt?");
+                    charizardEnemy.attackChar(uPlayer, 0);
                     uPlayer.checkLiving();
                     uPlayer.playerInventoryStats();
                 }
@@ -274,6 +274,7 @@ class Main {
                     uPlayer.damageTaken(100);
                     uPlayer.checkLiving();
                     uPlayer.playerInventoryStats();
+
                 }
             }
 
