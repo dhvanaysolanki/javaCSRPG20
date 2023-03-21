@@ -55,7 +55,7 @@ class Main {
         String stickOrSword = GameControl.strInputValidation(new String[]{"Stick", "Sword"}, "Player " + uPlayer.characterName
                 + ", what is your ultimate choice? (Stick, OR Sword): ");
 
-        if (stickOrSword.equals("Stick")) {
+        if (stickOrSword.equals("stick")) {
             System.out.println("\nYou feel the power of the ancient wooden stick, feeling its power surge through your hands!");
             uPlayer.playerInventoryAdd("Wood Stick", new int[]{50, 10});
             System.out.println("\nBecoming one with this strength, you decide to continue searching for more.");
