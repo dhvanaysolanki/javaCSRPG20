@@ -228,7 +228,8 @@ class Main {
      various levels of combat.
     2.Why is it needed? This method is essential as in one variable the code is able to conceptualize all of the finalBossBattle, allowing it to be quickly placed
     into other methods such as our direction-based stories. Furthermore, this would allow user to take different routes but still end up
-    at finalBossBattle through one line of code.
+    at finalBossBattle through one line of code -- our code didn't allow multiple directions such as N and S both leading to a boss battle
+     -- but simply adding finalBossBattle(); under southStory would solve that issue.
     3. Parameters? There aren't any parameters, the method mainly utilizes I/P/O, and ensure that the process works in all scenarios.
     A small parameter present would be input Validation, where all invalid ints, random strings and a combination of the two are immediately removed, and the prompt
     is restated.
