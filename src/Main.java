@@ -85,8 +85,8 @@ class Main {
 
         } else {
             bossBattle();
-            System.out.println("Honestly, we didn't think you could do this, but congrats -- we will have to better train Charizard after that.\n" +
-                    "Hope you enjoyed your time in our FantasyWorld, and here is our final gift to you!");
+            System.out.println("\nHonestly, we didn't think you could do this, but congrats -- we will have to better train Charizard after that.\n" +
+                    "Hope you enjoyed your time in our FantasyWorld, and here is our final gift to you!\n");
             System.out.println("         />_________________________________");
             System.out.println("[########[]_________________________________>");
             System.out.println("         />");
@@ -233,7 +233,13 @@ class Main {
     A small parameter present would be input Validation, where all invalid ints, random strings and a combination of the two are immediately removed, and the prompt
     is restated.
     4. Precondition: The input isn't blank and must have the right elements. The string must attach to the cases we have presented, and carry out the method coded.
-    5. Postcondition:
+    5. Postconditions: Intended result coming out at the end of each case: "Attack" -- User either successfully defeats boss
+    and wins boss battle, or must restart the game after their health reaches 0. "Dodge" -- Charizard aims to attack,
+     and 60% of the time will miss. User should be given case options again. "Retreat" -- User takes damage for attempting to run,
+      but is presented with cases again to choose more wisely.
+   6. In order to debug the method, there was a creation of boolean true loop, where this switch-case method will
+   continue running after the user completes the code in a case. This included loop is also given to break,
+   to indicate the user has won, and the cases don't need to be brought up again.
      */
     public static void bossBattle() {
         System.out.println("Dun! Dun! Dun! Welcome to the most thrill you have ever experienced in your life."
@@ -254,7 +260,7 @@ class Main {
 
 
                         charizardEnemy.attackChar(uPlayer, 0);
-                        System.out.println("Charizard, with a small smirk -- opens his jaw and launches a raging fireball. CRITICAL HIT!");
+                        System.out.println("Charizard, with a small smirk -- opens his jaw and launches a raging fireball.");
                         uPlayer.checkLiving();
                         System.out.println("You only have " + uPlayer.characterHealth + " health remaining!");
 
@@ -264,7 +270,7 @@ class Main {
                 case "dodge" -> {
                     System.out.println("Aiming to run from incoming shots, you dive to your left! " +
                             "Will Charizard be able to adapt?");
-                    charizardEnemy.attackChar(uPlayer, 0);
+                    charizardEnemy.attackCharDodge(uPlayer, 0);
                     uPlayer.checkLiving();
                     uPlayer.playerInventoryStats();
                 }

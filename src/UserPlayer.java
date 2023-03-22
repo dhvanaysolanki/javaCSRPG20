@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class UserPlayer extends CharPlayer {
 
-    // class attriutes
+    // class attributes
 
     private HashMap<String, int[]> playerInventory;
     private int playerExp;
