@@ -57,13 +57,13 @@ class Main {
 
         if (stickOrSword.equals("stick")) {
             System.out.println("\nYou feel the power of the ancient wooden stick, feeling its power surge through your hands!");
-            uPlayer.playerInventoryAdd("Wood Stick", new int[]{50, 10});
+            uPlayer.playerInventoryAdd("Wood Stick", new int[]{50, 1});
             System.out.println("\nBecoming one with this strength, you decide to continue searching for more.");
         } else {
 
             System.out.println("You gain 200 attack ... But you accidentally cut yourself -- losing 150 health!");
 
-            uPlayer.playerInventoryAdd("Silver Sword", new int[]{200, 10});
+            uPlayer.playerInventoryAdd("Silver Sword", new int[]{200, 1});
             uPlayer.damageTaken(150);
             uPlayer.checkLiving();
             uPlayer.playerInventoryStats();
@@ -108,7 +108,7 @@ class Main {
         uPlayer.damageTaken(15);
         uPlayer.checkLiving();
 
-        uPlayer.playerInventoryAdd("Rigid Seashell Shield", new int[]{1, 2});
+        uPlayer.playerInventoryAdd("Rigid Seashell Shield", new int[]{1, 10});
         uPlayer.playerInventoryStats();
         System.out.println("You place the chestplate on your body, feeling strong as ever.\n");
 
@@ -171,7 +171,7 @@ class Main {
             UserEnemy buffBear = new UserEnemy("Buff Bear", new int[]{0, 420, 0, 125, 0, 21});
 
 
-            String bearScene = GameControl.strInputValidation(new String[]{"attack", "run", "feed"}, "Player " + uPlayer.characterName + " what would you like to do? (attack, run or feed)");
+            String bearScene = GameControl.strInputValidation(new String[]{"attack", "run", "feed"}, "Player " + uPlayer.characterName + " what would you like to do? (attack, run or feed): ");
             System.out.println(bearScene);
 
 
@@ -179,7 +179,7 @@ class Main {
                 case "attack" -> {
                     while (buffBear.enemyCheckLiving()) {
 
-                        String weaponOfChoice = GameControl.strInputValidation(uPlayer.viewPlayerInventory().keySet().toArray(new String[0]), uPlayer.characterName + " Which weapon would you like to choose. ");
+                        String weaponOfChoice = GameControl.strInputValidation(uPlayer.viewPlayerInventory().keySet().toArray(new String[0]), uPlayer.characterName + " Which weapon would you like to choose: ");
                         System.out.println(weaponOfChoice);
 
                         uPlayer.attackChar(buffBear, uPlayer.viewPlayerInventory().get(weaponOfChoice)[0]);
@@ -248,12 +248,13 @@ class Main {
         System.out.println("Your final challenge is: Charizard from the Pokemon of Oz.");
         UserEnemy charizardEnemy = new UserEnemy("Charizard", new int[]{0, 820, 0, 200, 0, 16});
 
-        loop: while (true) {
-            String bossScene = GameControl.strInputValidation(new String[]{"attack", "dodge", "retreat"}, "Player " + uPlayer.characterName + " be careful with your choices, Charizard will seriously burn you. (attack, dodge or retreat)");
+        loop:
+        while (true) {
+            String bossScene = GameControl.strInputValidation(new String[]{"attack", "dodge", "retreat"}, "Player " + uPlayer.characterName + " be careful with your choices, Charizard will seriously burn you. (attack, dodge or retreat): ");
             switch (bossScene) {
                 case "attack" -> {
                     while (charizardEnemy.enemyCheckLiving()) {
-                        String weaponOfChoice = GameControl.strInputValidation(uPlayer.viewPlayerInventory().keySet().toArray(new String[0]), uPlayer.characterName + " Which weapon would you like to choose. ");
+                        String weaponOfChoice = GameControl.strInputValidation(uPlayer.viewPlayerInventory().keySet().toArray(new String[0]), uPlayer.characterName + " Which weapon would you like to choose: ");
                         System.out.println(weaponOfChoice);
 
                         uPlayer.attackChar(charizardEnemy, uPlayer.viewPlayerInventory().get(weaponOfChoice)[0]);
@@ -271,7 +272,7 @@ class Main {
                 case "dodge" -> {
                     System.out.println("Aiming to run from incoming shots, you dive to your left! " +
                             "Will Charizard be able to adapt?");
-                    charizardEnemy.attackCharDodge(uPlayer, 0);
+                    charizardEnemy.attackChar(uPlayer, 0);
                     uPlayer.checkLiving();
                     uPlayer.playerInventoryStats();
                 }
@@ -288,8 +289,6 @@ class Main {
         }
 
     }
-
-
 
 
     private static String directionChoose() {

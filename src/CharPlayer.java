@@ -38,25 +38,12 @@ class CharPlayer extends GameControl {
 
         if (randomNum(0, 5) < 4) {
             dTarget.damageTaken(this.characterAttack + weaponBoost);
-            System.out.println("Critical Hit!");
         } else {
             System.out.println("\n" + this.characterName + " missed their attack! on " + dTarget.characterName);
         }
 
-    }
-
-    void attackCharDodge(CharPlayer dTarget, int weaponBoost) {
-
-        if (randomNum(0, 5) >= 4) {
-            dTarget.damageTaken(this.characterAttack + weaponBoost);
-            System.out.println("Critical Hit!");
-        } else {
-            System.out.println("\n" + this.characterName + " missed their attack! on " + dTarget.characterName);
-        }
 
     }
-
-
 }
 
 
